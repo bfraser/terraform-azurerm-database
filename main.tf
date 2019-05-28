@@ -42,7 +42,7 @@ resource "azurerm_sql_firewall_rule" "firewall_rules" {
 }
 
 resource "azurerm_sql_virtual_network_rule" "vnet_rules" {
-  count               = "${var.vnet_rule_count)}"
+  count               = "${var.vnet_rule_count}"
   name                = "${var.vnet_rule_name_prefix}${lookup(var.vnet_rules[count.index], "name", count.index)}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   server_name         = "${azurerm_sql_server.server.name}"
