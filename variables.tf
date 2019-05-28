@@ -51,7 +51,7 @@ variable "firewall_rules" {
 
 variable "vnet_rule_name_prefix" {
   description = "Specifies prefix for vnet rule names."
-  default     = "postgresql-vnet-rule-"
+  default     = "sql-vnet-rule-"
 }
 
 variable "vnet_rules" {
