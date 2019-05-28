@@ -32,10 +32,19 @@ resource "azurerm_sql_server" "server" {
   tags                         = "${var.tags}"
 }
 
-resource "azurerm_sql_firewall_rule" "fw" {
-  name                = "${var.db_name}-fwrules"
+resource "azurerm_sql_firewall_rule" "firewall_rules" {
+  count               = "${length(var.firewall_rules)}"
+  name                = "${var.firewall_rule_prefix}${lookup(var.firewall_rules[count.index], "name", count.index)}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   server_name         = "${azurerm_sql_server.server.name}"
-  start_ip_address    = "${var.start_ip_address}"
-  end_ip_address      = "${var.end_ip_address}"
+  start_ip_address    = "${lookup(var.firewall_rules[count.index], "start_ip")}"
+  end_ip_address      = "${lookup(var.firewall_rules[count.index], "end_ip")}"
+}
+
+resource "azurerm_sql_virtual_network_rule" "vnet_rules" {
+  count               = "${length(var.vnet_rules)}"
+  name                = "${var.vnet_rule_name_prefix}${lookup(var.vnet_rules[count.index], "name", count.index)}"
+  resource_group_name = "${azurerm_resource_group.rg.name}"
+  server_name         = "${azurerm_sql_server.server.name}"
+  subnet_id           = "${lookup(var.vnet_rules[count.index], "subnet_id")}"
 }

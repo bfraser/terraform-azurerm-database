@@ -17,3 +17,11 @@ output "sql_admin_username" {
 output "sql_password" {
   value = "${var.sql_password}"
 }
+
+output "firewall_rule_ids" {
+  value = "${module.sql-database.firewall_rule_ids}"
+}
+
+output "vnet_rule_ids" {
+  value = "${module.sql-database.vnet_rule_ids}"
+}

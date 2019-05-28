@@ -18,10 +18,8 @@ variable "sql_password" {
   default = "P@ssw0rd12345!"
 }
 
-variable "start_ip_address" {
-  default = "0.0.0.0"
-}
+variable "fw_rule_prefix" {}
 
-variable "end_ip_address" {
-  default = "255.255.255.255"
+variable "fw_rules" {
+  type = "list"
 }
