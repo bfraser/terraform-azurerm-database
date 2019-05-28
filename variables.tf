@@ -55,7 +55,8 @@ variable "vnet_rule_name_prefix" {
 }
 
 variable "vnet_rules" {
-  description = "The list of maps, describing vnet rules. Valud map items: name, subnet_id."
+  description = "The list of maps, describing vnet rules. Valid map items: name, subnet_id."
+  type        = "list"
   default     = []
 }
 
