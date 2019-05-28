@@ -49,6 +49,11 @@ variable "firewall_rules" {
   default     = []
 }
 
+variable "vnet_rule_count" {
+  description = "The number of vnet rules to be created"
+  default     = ""
+}
+
 variable "vnet_rule_name_prefix" {
   description = "Specifies prefix for vnet rule names."
   default     = "sql-vnet-rule-"

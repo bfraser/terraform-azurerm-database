@@ -23,6 +23,7 @@ module "sql-database" {
     {start_ip="127.0.0.0", end_ip="127.0.1.0"}
   ]
 
+  vnet_rule_count = 1
   vnet_rule_name_prefix = "sql-vnet-rule-"
   vnet_rules = [
     {name="subnet1", subnet_id="<subnet_id>"}
